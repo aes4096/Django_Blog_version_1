@@ -1,0 +1,2 @@
+Django~=5.2
+django-taggit~=6.1.0

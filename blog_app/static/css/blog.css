@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, sans-serif;
+    background-color: #333; /* Темный фон */
+    color: #fff; /* Белый текст */
+}
+
+a {
+    color: #00abff; /* Ссылки могут остаться такими же или изменить цвет, чтобы лучше смотрелись на темном фоне */
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: normal;
+    border-bottom: 1px solid #777; /* Светлее для темного фона */
+    padding: 0 0 10px 0;
+}
+
+h2 {
+    font-weight: normal;
+    margin: 30px 0 0;
+}
+
+#content {
+    float: left;
+    width: 60%;
+    padding: 0 0 0 30px;
+}
+
+#sidebar {
+    float: right;
+    width: 30%;
+    padding: 10px;
+    background: #555; /* Темнее, чем основной фон, для контраста */
+    height: 100%;
+}
+
+p.date {
+    color: #aaa; /* Светлее, чтобы было видно на темном фоне */
+    font-family: georgia, serif;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* pagination */
+.pagination {
+    margin: 40px 0;
+    font-weight: bold;
+}
+
+/* forms */
+input[type=submit] {
+    font-weight: bold;
+    background: #00abff; /* Кнопка остается такой же, но можете изменить, если нужно */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.errorlist {
+    color: #ff6666; /* Более видимый на темном фоне */
+    float: left;
+    clear: both;
+    padding-left: 10px;
+}
+
+/* comments */
+.comment {
+    padding: 10px;
+    color: #000; /* Черный текст на комментариях для контраста, если оставите фон комментариев светлым */
+}
+
+.comment:nth-child(even) {
+    background: #efefef; /* Светлый фон для чередования комментариев, можно сделать темнее для темной темы */
+}
+
+.comment .info {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666; /* Светлее для лучшей видимости на темном фоне */
+}
+
+.text-white {
+  color: white;
+}
