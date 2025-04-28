@@ -1,29 +1,31 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p class="date">
         Published {{ post.publish }} by {{ post.author }}
     </p>
-    {{ post.body|linebreaks }}
+    {{ post.body|markdown }}
+    <hr>
     <p>
         <a href="{% url 'blog_app:post_share' post.id %}">
-            Поделиться этим постом
+            Share this post
         </a>
     </p>
     <hr>
-     <h2>Похожие посты</h2>
+     <h2>Similar posts</h2>
     {% for post in similar_posts %}
         <p>
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </p>
     {% empty %}
-        <p>Здесь нет похожих постов.</p>
+        <p>There are no similar posts yet.</p>
     {% endfor %}
     <hr>
     {% with comments.count as total_comments %}
         <h2>
-            {{ total_comments }} комментарий {{ total_comments|pluralize }}
+            {{ total_comments }} comment {{ total_comments|pluralize }}
         </h2>
     {% endwith %}
     {% for comment in comments %}
@@ -35,7 +37,7 @@
             {{ comment.body|linebreaks }}
         </div>
     {% empty %}
-        <p>Комментарии отсутствуют.</p>
+        <p>There are no comments.</p>
     {% endfor %}
     <hr>
     {% include "blog/post/includes/comment_form.html" %}
