@@ -1,2 +1,4 @@
 .env
 .venv
+mysite_data.json
+db.sqlite3
