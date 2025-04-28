@@ -1,6 +1,6 @@
 from django import forms
+from blog_app.models import Comment, Post
 
-from blog_app.models import Comment
 
 
 class EmailPostForm(forms.Form):
@@ -13,3 +13,7 @@ class CommentForm(forms.ModelForm): # форма будет создана ав�
     class Meta:
         model = Comment # форма связана с моделью Comment
         fields = ['name', 'email', 'body'] # Список полей модели, которые должны быть включены в форму
+
+
+class SearchForm(forms.Form):
+    query = forms.CharField()
