@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,6 @@ SERVER_EMAIL = env('SERVER_EMAIL')
 
 # Custom setting. To email (for test)
 #RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = "/"

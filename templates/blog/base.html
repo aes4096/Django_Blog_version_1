@@ -17,6 +17,17 @@
         This is my blog.
     </p>
     <hr>
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <a href="#" onclick="parentNode.submit();">Log Out</a>
+    </form>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+    <hr>
     <h3>Latest posts</h3>
     {% show_latest_posts 3 %}
     <hr>
