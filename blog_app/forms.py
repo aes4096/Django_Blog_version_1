@@ -4,16 +4,22 @@ from blog_app.models import Comment, Post
 
 
 class EmailPostForm(forms.Form):
-    name = forms.CharField(max_length=25)
-    #email = forms.EmailField()
-    to = forms.EmailField()
-    comments = forms.CharField(required=False, widget=forms.Textarea)
+    name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={"class": "form-control mb-1", 'placeholder': 'Name'}))
+    to = forms.EmailField(required=True, widget=forms.TextInput(attrs={"class": "form-control mb-1", 'placeholder': 'To'}))
+    comments = forms.CharField(required=False,
+                               widget=forms.Textarea(attrs={"class": "form-control mb-1", 'placeholder': 'Comments'}))
 
-class CommentForm(forms.ModelForm): # форма будет создана автоматически на основе модели
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Comment # форма связана с моделью Comment
-        fields = ['name', 'email', 'body'] # Список полей модели, которые должны быть включены в форму
+        model = Comment
+        fields = ['name', 'email', 'body']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'email': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Текст комментария'}),
+        }
 
 
 class SearchForm(forms.Form):
-    query = forms.CharField()
+    query = forms.CharField(
+        widget=forms.TextInput(attrs={"class": "form-control mb-1", 'placeholder': 'Enter search term...'}))

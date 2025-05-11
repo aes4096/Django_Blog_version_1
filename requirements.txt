@@ -2,3 +2,4 @@ Django~=5.2
 django-taggit~=6.1.0
 Markdown~=3.8
 django-environ~=0.12.0
+pillow~=11.2.1

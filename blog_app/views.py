@@ -39,10 +39,11 @@ def post_list(request, tag_slug=None):
         # Если page_number находится вне диапазона, то
         # выдать последнюю страницу
         posts = paginator.page(paginator.num_pages)
+    paging = paginator.get_elided_page_range(number=page_number, on_each_side=1, on_ends=1)
     return render(
         request,
         'blog/post/list.html',
-        {'posts': posts, 'tag': tag},
+        {'posts': posts, 'tag': tag, 'page_obj': paginator.get_page(page_number), 'paging': paging},
     )
 
 
@@ -100,6 +101,12 @@ def post_comment(request, post_id):
     post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     comment = None
     # Комментарий был отправлен
+    comment_post = request.POST.copy()
+
+    if request.user.is_authenticated:
+        comment_post['name'] = request.user.username
+        comment_post['email'] = request.user.email
+
     form = CommentForm(data=request.POST)
     if form.is_valid():
         # Создать объект класса Comment, не сохраняя его в базе данных

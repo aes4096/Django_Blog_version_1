@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.postgres',
     'accounts.apps.AccountsConfig',
+    'social_django',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Blog.urls'
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -71,6 +80,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -163,3 +174,13 @@ SERVER_EMAIL = env('SERVER_EMAIL')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = '/accounts/login/'
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/media/'
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+
+SOCIAL_AUTH_GITHUB_KEY = env('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = env('SOCIAL_AUTH_GITHUB_SECRET')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
