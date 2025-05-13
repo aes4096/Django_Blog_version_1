@@ -1,16 +1,21 @@
+# Preparation
+Rename **_.env** to **.env**.
+
 # Create database
-I use PostgreSQL 17.4.
+PostgreSQL 17.4.
 ```sql
 CREATE USER blog_user WITH PASSWORD 'password';
 CREATE DATABASE blog_db OWNER blog_user ENCODING 'UTF8' LC_COLLATE 'ru_RU.UTF8' LC_CTYPE 'ru_RU.UTF8' TEMPLATE=template0;
 ```
 
 # Applying migration to a database
+Execute command in Pycharm
 ```shell
 python manage.py migrate
 ```
 
 # Create superuser
+Execute command in Pycharm
 ```shell
 python manage.py createsuperuser
 ```
