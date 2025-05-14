@@ -1,5 +1,9 @@
 # Preparation
-Rename **_.env** to **.env**.
+Rename **_.env** to **.env**. Execute command in Pycharm
+```shell
+python.exe -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
 # Create database
 PostgreSQL 17.4.
@@ -11,8 +15,6 @@ CREATE DATABASE blog_db OWNER blog_user ENCODING 'UTF8' LC_COLLATE 'ru_RU.UTF8' 
 # Applying migration to a database
 Execute command in Pycharm
 ```shell
-python.exe -m pip install --upgrade pip
-pip install -r requirements.txt
 python manage.py migrate
 ```
 
