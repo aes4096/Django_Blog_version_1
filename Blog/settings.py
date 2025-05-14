@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'social_django',
     'django_bootstrap5',
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +114,14 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 3,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
